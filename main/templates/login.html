@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Amelia Laundry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6A0DAD, #9A4DFF);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 360px;
+            padding: 25px;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #9A4DFF;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #6A0DAD;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 16px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background: #6A0DAD;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4B0082;
+        }
+
+        .link {
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .link a {
+            color: #6A0DAD;
+            text-decoration: none;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <div class="avatar">A</div>
+    <div class="title">Amelia Laundry</div>
+    <div class="subtitle">Silakan login sebagai Admin, Customer, atau Driver</div>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button>Login</button>
+    </form>
+
+    <div class="link">
+        Belum punya akun? <a href="{% url 'register' %}">Daftar sebagai Customer</a>
+    </div>
+</div>
+
+</body>
+</html>
